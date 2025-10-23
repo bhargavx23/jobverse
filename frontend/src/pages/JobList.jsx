@@ -62,7 +62,7 @@ const JobList = () => {
       });
 
       const response = await axios.get(
-        `http://localhost:30000/api/jobs?${params}`
+        `https://jobverse-g2td.onrender.com/api/jobs?${params}`
       );
       setJobs(response.data.jobs);
       setTotalPages(response.data.totalPages);
@@ -76,7 +76,7 @@ const JobList = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get("http://localhost:30000/api/jobs/stats");
+      const response = await axios.get("https://jobverse-g2td.onrender.com/api/jobs/stats");
       setStats(response.data);
     } catch (error) {
       console.log(error);
