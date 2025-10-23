@@ -55,7 +55,7 @@ const AdminDashboard = () => {
 
       // Fetch stats
       const statsResponse = await axios.get(
-        "http://localhost:30000/api/admin/stats",
+        "https://jobverse-g2td.onrender.com/api/admin/stats",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
 
       // Fetch recent jobs
       const jobsResponse = await axios.get(
-        "http://localhost:30000/api/admin/jobs?limit=5",
+        "https://jobverse-g2td.onrender.com/api/admin/jobs?limit=5",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -73,7 +73,7 @@ const AdminDashboard = () => {
 
       // Fetch recent applications
       const applicationsResponse = await axios.get(
-        "http://localhost:30000/api/admin/applications/recent",
+        "https://jobverse-g2td.onrender.com/api/admin/applications/recent",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -82,7 +82,7 @@ const AdminDashboard = () => {
 
       // Fetch recent users
       const usersResponse = await axios.get(
-        "http://localhost:30000/api/admin/users/recent",
+        "https://jobverse-g2td.onrender.com/api/admin/users/recent",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -413,7 +413,7 @@ const AdminDashboard = () => {
                       <div className="flex items-center gap-3">
                         {job.companyLogo ? (
                           <img
-                            src={`http://localhost:30000/uploads/${job.companyLogo}`}
+                            src={`https://jobverse-g2td.onrender.com/uploads/${job.companyLogo}`}
                             alt={job.company}
                             className="w-10 h-10 rounded-lg object-cover"
                           />
