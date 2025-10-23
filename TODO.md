@@ -1,8 +1,8 @@
 # TODO: Push Project to GitHub Repo
 
-- [ ] Check Git status and initialize if needed
-- [ ] Add GitHub remote origin
-- [ ] Stage all project files
-- [ ] Commit changes
-- [ ] Push to main branch
-- [ ] Verify push on GitHub
+- [x] Check Git status and initialize if needed
+- [x] Add GitHub remote origin
+- [x] Stage all project files
+- [x] Commit changes
+- [x] Push to main branch
+- [x] Verify push on GitHub
