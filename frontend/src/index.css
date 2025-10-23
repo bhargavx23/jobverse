@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-purple-600 border-2 border-purple-200 font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out;
+  }
+
+  .card {
+    @apply bg-white border-2 border-purple-100 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:border-purple-200;
+  }
+
+  .input-field {
+    @apply bg-white border-2 border-purple-200 rounded-2xl px-4 py-3 text-gray-900 placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-all duration-300 ease-out;
+  }
+
+  .icon-btn {
+    @apply p-3 rounded-2xl text-purple-600 hover:text-purple-700 hover:bg-purple-50 transition-all duration-200 ease-out;
+  }
+
+  .fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .bounce-in {
+    animation: bounceIn 1s ease-out;
+  }
+
+  .stagger-in {
+    animation: staggerIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .parallax-bg {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .glow {
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.4), 0 0 60px rgba(147, 51, 234, 0.2);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-white border-2 border-purple-100 shadow-lg;
+  }
+
+  .micro-interaction {
+    transition: all 0.2s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes staggerIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes parallaxMove {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+body {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 25%, #ddd6fe 50%, #ede9fe 75%, #faf5ff 100%);
+  min-height: 100vh;
+  background-attachment: fixed;
+  color: #1e293b;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(196, 181, 253, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    @apply rounded-2xl p-4;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    @apply py-2 px-4 text-sm rounded-xl;
+  }
+
+  .text-gradient {
+    @apply text-4xl;
+  }
+}
+
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    @apply py-2 px-3 text-xs rounded-lg;
+  }
+
+  .card {
+    @apply p-3;
+  }
+}
