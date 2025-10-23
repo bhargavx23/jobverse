@@ -19,9 +19,10 @@ app.use(cors());
 app.use("/uploads", express.static("public/uploads"));
 
 app.get("/", (request, response) => {
-  console.log(request);
-  return response.status(234).send("Welcome To Job Portal MERN Stack");
+  console.log("GET request received at /");
+  return response.status(200).send("Welcome To Job Portal MERN Stack");
 });
+
 
 // Routes
 app.use("/api/auth", authRoute);
