@@ -7,6 +7,8 @@ import Spinner from "../components/Spinner";
 import JobCard from "../components/JobCard";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
+import Features from "../components/Features";
+import Testimonials from "../components/Testimonials";
 
 import {
   FaBriefcase,
@@ -30,6 +32,7 @@ import {
   FaTrophy,
   FaLightbulb,
   FaHeart,
+  FaShieldAlt,
 } from "react-icons/fa";
 
 const JobList = () => {
@@ -182,48 +185,6 @@ const JobList = () => {
             </div>
           </motion.div>
 
-          {/* Auth Buttons */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex justify-center gap-4 mb-12"
-          >
-            {!user ? (
-              <>
-                <Link
-                  to="/login"
-                  className="bg-white hover:bg-gray-50 text-purple-600 px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-200 transform hover:scale-105"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-200 transform hover:scale-105"
-                >
-                  Get Started
-                </Link>
-              </>
-            ) : (
-              <div className="flex gap-4">
-                <Link
-                  to="/dashboard"
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-200 transform hover:scale-105"
-                >
-                  My Dashboard
-                </Link>
-                {user.role === "admin" && (
-                  <Link
-                    to="/admin"
-                    className="bg-white hover:bg-gray-50 text-purple-600 px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-200 transform hover:scale-105"
-                  >
-                    Admin Panel
-                  </Link>
-                )}
-              </div>
-            )}
-          </motion.div>
-
           {/* Quick Stats and Features */}
           <motion.div
             initial={{ y: 50, opacity: 0 }}
@@ -290,12 +251,22 @@ const JobList = () => {
                   </Link>
                 </>
               ) : (
-                <Link
-                  to="/dashboard"
-                  className="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-200 transform hover:scale-105"
-                >
-                  Go to Dashboard
-                </Link>
+                <div className="flex gap-4">
+                  <Link
+                    to="/dashboard"
+                    className="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-200 transform hover:scale-105"
+                  >
+                    My Dashboard
+                  </Link>
+                  {user.role === "admin" && (
+                    <Link
+                      to="/admin"
+                      className="border-2 border-white text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 transform hover:scale-105 hover:bg-white hover:text-purple-600"
+                    >
+                      Admin Panel
+                    </Link>
+                  )}
+                </div>
               )}
             </div>
           </motion.div>
@@ -303,14 +274,15 @@ const JobList = () => {
       </motion.div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Search and Filters */}
         <motion.form
+          id="search"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+          transition={{ duration: 0.6 }}
           onSubmit={handleSearch}
-          className="mb-12 bg-white rounded-3xl shadow-xl p-8 -mt-8 relative z-10"
+          className="mb-12 bg-white rounded-3xl shadow-xl p-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="relative">
@@ -362,7 +334,7 @@ const JobList = () => {
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           {loading ? (
             <div className="flex justify-center py-20">
@@ -425,7 +397,7 @@ const JobList = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.6 }}
+              transition={{ delay: 0.4 }}
               className="flex justify-center gap-3"
             >
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(
@@ -447,6 +419,91 @@ const JobList = () => {
           )}
         </motion.div>
       </div>
+
+      {/* Features Section */}
+      <Features />
+
+      {/* How It Works Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Get started in just three simple steps and land your dream job
+              today.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                1
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Create Your Profile
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Sign up and build your professional profile to showcase your
+                skills and experience.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                2
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Search & Apply
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Use our advanced search to find jobs that match your preferences
+                and apply instantly.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                3
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Get Hired
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Track your applications and connect with employers for your next
+                career opportunity.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
       <Footer />
     </div>
   );
